@@ -33,7 +33,21 @@ $tooltip_border_color: #d0d0d0;
 // move elsewhere?
 $panel_width : 50px;    // vertical panels
 $panel_height : 40px;
-$shell_radius : 0px;
+
+$global_radius : 0px;
+$button_radius : 0px;
+$entry_radius : 0px;
+$osd_radius : 0px;
+
+$checkbox_size : 16px;
+$scrollbar_size : 20px;
+$toggle_width : 50px;
+$toggle_height : 20px;
 
 $tasklist_item_width : 15em;
 $taskgroup_item_width : 30px;
+
+$notification_radius : 0px;
+//$notification_bg_color :
+//$notification_fg_color : 
+//$notification_border_color :  
