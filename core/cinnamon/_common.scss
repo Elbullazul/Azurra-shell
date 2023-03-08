@@ -1,1 +1,26 @@
 // use https://github.com/linuxmint/mint-themes
+
+.grouped-window-list-item-box {
+  @include window_list("base");
+  
+  &:hover { @include window_list("hover"); }
+  &:active,
+  &:checked {
+    @include window_list("active");
+    
+    &:hover { @include window_list("active-hover"); }
+    &:focus {
+      @include window_list("focus");
+      
+      &:hover { @include window_list("focus-hover"); }
+    }
+  }
+  &-demands-attention {
+    @include window_list("error");
+    
+    &:hover { @include window_list("error-hover"); }
+  }
+  
+  .progress { @include window_list("progress"); }
+  &:focus .progress { @include window_list("focus-progress"); }
+}
