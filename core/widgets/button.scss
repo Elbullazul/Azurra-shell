@@ -1,0 +1,31 @@
+// shell button
+
+@mixin button($type) {
+  @if $type == "base" {
+    
+  }
+  @if $type == "flat" {
+    
+  }
+  @if $type == "focus" {
+    
+  }
+  @if $type == "hover" {
+    
+  }
+  @if $type == "active" {
+    
+  }
+  @if $type == "disabled" {
+    
+  }
+  @if $type == "osd" {
+    
+  }
+  @if $type == "osd-hover" {
+    
+  }
+  @if $type == "osd-active" {
+    
+  }
+}

@@ -1,0 +1,36 @@
+// shell panel
+// in cinnamon, it's a taskbar
+// in gnome, it's the top bar
+
+$panel_min_height : 32px;
+$panel_bg_color : #000000;
+$panel_fg_color : #FFFFFF;
+
+@mixin panel($position) {
+  @if $position : "top" {
+
+  }
+  @if $position : "bottom" {
+
+  }
+  @if $position : "left" {
+
+  }
+  @if $position : "right" {
+
+  }
+}
+
+@mixin panel_button() {
+  
+
+  &:focus {
+        
+  }
+  &:hover {
+    
+  }
+  &:active {
+    
+  }
+}

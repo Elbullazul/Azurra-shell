@@ -1,0 +1,23 @@
+// shell keyboard and keys
+@mixin keyboard() {
+  // background colors, size, etc.
+}
+
+@mixin keyboard_key($type) {
+  @if $type == "base" {
+
+  }
+  @if $type == "hover" {
+
+  }
+  @if $type == "active" {
+
+  }
+  @if $type == "disabled" {
+
+  }
+  // shift key
+  @if $type == "suggested" {
+  
+  }
+}

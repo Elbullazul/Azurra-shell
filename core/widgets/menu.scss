@@ -1,0 +1,25 @@
+// shell menu
+@mixin menu($type) {
+  @if $type == "normal" {
+
+  }
+  @if $type == "submenu" {
+    
+  }  
+}
+
+@mixin menuitem($type) {
+  @if $type == "unselected" {
+    
+  }
+  @if $type == "selected" {
+
+  }
+  // for submenus
+  @if $type == "checked" {
+    
+  }
+}
+
+// TODO: "start" menu for cinnamon
+// TODO: quick settings menu for gnome

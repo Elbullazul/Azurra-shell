@@ -1,0 +1,15 @@
+// shell switcher-list (alt-tab selector)
+
+@mixin app_switcher() {
+  // background, size, padding, etc.
+  
+}
+
+@mixin app_switcher_selection($type) {
+  @if $type == "base" {
+    
+  }
+  @if $type == "selected" {
+    
+  }
+}

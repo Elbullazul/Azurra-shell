@@ -1,0 +1,20 @@
+// shell check and radio buttons
+@mixin check($type : "base") {
+  @if $type == "unchecked" {
+    
+  }
+
+  @if $type == "checked" {
+    
+  }
+}
+
+@mixin radio($type : "base") {
+  @if $type == "unchecked" {
+    
+  }
+
+  @if $type == "checked" {
+    
+  }
+}

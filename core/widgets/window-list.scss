@@ -1,0 +1,40 @@
+// cinnamon window-list and task-list (icons only, mostly the same)
+
+// window preview on hover
+@mixin window_preview() {
+  
+}
+
+// TODO: change based on panel position (left, right, top, bottom)
+@mixin window_list($type) {
+  @if $type == "base" {
+    
+  }
+  @if $type == "focus" {
+    
+  }
+  @if $type == "hover" {
+    
+  }
+  @if $type == "active" {
+    
+  }
+  @if $type == "active-focus" {
+    
+  }
+  @if $type == "active-hover" {
+    
+  }
+  @if $type == "error" {
+    
+  }
+  @if $type == "error-focus" {
+    
+  }
+  @if $type == "error-hover" {
+    
+  }
+  @if $type == "progress" {
+    
+  }
+}
