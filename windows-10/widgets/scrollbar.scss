@@ -1,20 +1,28 @@
 // shell scrollbars
 
-$scrollbar_min_size : 20px;
+$scrollbar_trough_radius : 0px;
 
 @mixin scrollbar_trough() {
-
+  border-radius: $scrollbar_trough_radius;
+  background-color: transparentize($base_color, 0.9);
 }
 
 // TODO: horizontal/vertical?
+$scrollbar_slider_radius : 0px;
+
 @mixin scrollbar_slider($type) {
   @if $type == "base" {
-    
+    margin: 0px;
+    border-radius: $scrollbar_slider_radius;
+    border: 0px solid;
+    background-color: mix($fg_color, $bg_color, 40%);
   }
+  
   @if $type == "hover" {
-    
+    background-color: mix($fg_color, $bg_color, 30%);
   }
+  
   @if $type == "active" {
-    
+    background-color: $selected_bg_color;
   }
 }
