@@ -1,0 +1,22 @@
+// shell entry
+
+@mixin entry($type : "base") {
+  @if $type == "base" {
+    
+  }
+  @if $type == "focus" {
+    
+  }
+  @if $type == "disabled" {
+    
+  }
+  @if $type == "osd" {
+    
+  }
+  @if $type == "osd-focus" {
+    
+  }
+  @if $type == "osd-disabled" {
+    
+  }
+}

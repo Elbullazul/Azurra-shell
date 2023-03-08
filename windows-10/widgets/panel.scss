@@ -1,0 +1,27 @@
+// shell panel
+// in cinnamon, it's a taskbar
+// in gnome, it's the top bar
+
+@mixin panel($position) {
+  color: $panel_fg_color;
+  background-color: $panel_bg_color;
+}
+
+@mixin panel_button($type) {
+  @if $type == "base" {
+    color: $panel_fg_color;
+    background-color: transparent;
+  }
+  
+  @if $type == "focus" {
+    background-color: transparentize($panel_highlight_color, 0.7);
+  }
+  
+  @if $type == "hover" {
+    background-color: transparentize($panel_highlight_color, 0.7);
+  }
+  
+  @if $type == "active" {
+    background-color: transparentize($panel_highlight_color, 0.5);
+  }
+}

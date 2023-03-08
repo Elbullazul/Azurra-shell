@@ -1,0 +1,20 @@
+// shell scrollbars
+
+$scrollbar_min_size : 20px;
+
+@mixin scrollbar_trough() {
+
+}
+
+// TODO: horizontal/vertical?
+@mixin scrollbar_slider($type) {
+  @if $type == "base" {
+    
+  }
+  @if $type == "hover" {
+    
+  }
+  @if $type == "active" {
+    
+  }
+}

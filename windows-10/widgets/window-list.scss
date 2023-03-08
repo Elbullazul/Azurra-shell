@@ -1,0 +1,55 @@
+// cinnamon window-list and task-list (icons only, mostly the same)
+
+// window preview on hover
+@mixin window_preview() {
+  color: $text_color;
+  background-color: $base_color;
+}
+
+// TODO: change based on panel position (left, right, top, bottom)
+@mixin window_list($type) {
+  @if $type == "base" {
+    color: $panel_fg_color;
+    background-color: transparent;
+    
+    transition-duration: 50;
+  }
+  
+  @if $type == "hover" {
+    border-image: url("assets/app-hover.svg") 8;
+  }
+  
+  @if $type == "active" {
+    border-image: url("assets/app-open.svg") 8;
+  }
+  
+  @if $type == "active-hover" {
+    border-image: url("assets/app-focus.svg") 8;
+  }
+  
+  @if $type == "focus" {
+    border-image: url("assets/app-focus.svg") 8;
+  }
+  
+  @if $type == "focus-hover" {
+    border-image: url("assets/app-focus-hover.svg") 8;
+  }
+  
+  @if $type == "error" {
+    border-image: url("assets/item-attention.svg") 8;
+  }
+  
+  @if $type == "error-hover" {
+    border-image: url("assets/item-attention-hover.svg") 8;
+  }
+  
+  @if $type == "progress" {
+    background-color: $progress_color;
+    border-image: url("assets/app-progress.svg") 8;
+  }
+  
+  @if $type == "focus-progress" {
+    background-color: $progress_color;
+    border-image: url("assets/app-focus-progress.svg") 8;
+  }
+}
