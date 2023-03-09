@@ -8,6 +8,7 @@ $scrollbar_trough_radius : 0px;
 }
 
 // TODO: horizontal/vertical?
+// TODO: make it look the same on light/dark variants
 $scrollbar_slider_radius : 0px;
 
 @mixin scrollbar_slider($type) {
@@ -23,6 +24,6 @@ $scrollbar_slider_radius : 0px;
   }
   
   @if $type == "active" {
-    background-color: $selected_bg_color;
+    background-color: mix($fg_color, $bg_color, 60%);
   }
 }

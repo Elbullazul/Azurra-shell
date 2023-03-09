@@ -1,55 +1,86 @@
 // cinnamon window-list and task-list (icons only, mostly the same)
 
-// window preview on hover
-@mixin window_preview() {
-  color: $text_color;
-  background-color: $base_color;
-}
+// TODO: change reimplement with colors, box-shadow, borders and padding only
+/* The following snippet works for the left panel
+.grouped-window-list-item-box {
+  text-align: left;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.8);
+  background-color: transparent;
+  background-image: none;
+  padding-left: 8px;
+  padding-right: 8px;
+  border: 3px solid transparent;
+  transition-duration: 100; }
+  
+  .grouped-window-list-item-box.left {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    padding-right: 0px; }
+    .grouped-window-list-item-box.left StBin {
+      padding-left: 6px; }
+  .grouped-window-list-item-box:hover {
+    border-image: none;
+    background-color: rgba(0, 0, 0, 0.15); }
+  .grouped-window-list-item-box:active, .grouped-window-list-item-box:checked {
+    box-shadow: inset 3px 0px black; }
+    .grouped-window-list-item-box:active:hover, .grouped-window-list-item-box:checked:hover {
+      background-color: rgba(0,0,0,0.15); }
+    .grouped-window-list-item-box:active:focus, .grouped-window-list-item-box:checked:focus {
+      background-color: rgba(0,0,0,0.25);
+      border-width: 0px;
+      padding-top: 8px;
+      padding-bottom: 8px; }
+      .grouped-window-list-item-box:active:focus:hover, .grouped-window-list-item-box:checked:focus:hover {
+        background-color: rgba(0,0,0,0.3); }
+*/
+@mixin window_list($type, $position : "base") {
+  $prefix : "";
 
-// TODO: change based on panel position (left, right, top, bottom)
-@mixin window_list($type) {
+  @if $position != "base" {
+    $prefix : "#{$position}-";
+  }
+
   @if $type == "base" {
-    color: $panel_fg_color;
+    text-align: left;
+    font-weight: normal;
+    color: transparentize($panel_fg_color, 0.2);
     background-color: transparent;
+    background-image: none;
+    padding-top: 0px;
+    padding-left: 8px;
+    padding-right: 8px;
+    transition-duration: 100;
+  }
+  
+  @if $type == "left" or $type == "right" {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+  // hover
+  // active (opened in background app)
+  // active-hover
+  // focus (focused app)
+  // focus-hover
+  // error (needs attention)
+  // error-hover
+  // progress (app with progress)
+  // focus-progress (foreground app with progress)
+  @else {
+    border-image: url("assets/app-#{$prefix}#{$type}.svg") 8;
     
-    transition-duration: 50;
+    @if $type == "progress" {
+      background-color: $progress_color;
+    }
   }
   
   @if $type == "hover" {
-    border-image: url("assets/app-hover.svg") 8;
+    border-image: none;
+    background-color: transparentize($panel_highlight_color, 0.85);
   }
   
-  @if $type == "active" {
-    border-image: url("assets/app-open.svg") 8;
-  }
-  
-  @if $type == "active-hover" {
-    border-image: url("assets/app-focus.svg") 8;
-  }
-  
-  @if $type == "focus" {
-    border-image: url("assets/app-focus.svg") 8;
-  }
-  
-  @if $type == "focus-hover" {
-    border-image: url("assets/app-focus-hover.svg") 8;
-  }
-  
-  @if $type == "error" {
-    border-image: url("assets/item-attention.svg") 8;
-  }
-  
-  @if $type == "error-hover" {
-    border-image: url("assets/item-attention-hover.svg") 8;
-  }
-  
-  @if $type == "progress" {
-    background-color: $progress_color;
-    border-image: url("assets/app-progress.svg") 8;
-  }
-  
-  @if $type == "focus-progress" {
-    background-color: $progress_color;
-    border-image: url("assets/app-focus-progress.svg") 8;
-  }
 }
