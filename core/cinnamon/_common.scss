@@ -1616,46 +1616,46 @@ StScrollBar {
   &-item-box {
     @include window_list("base");
 
-    &.top,
+    &.top {
+      @include window_list("base", "top");
+      
+      
+      
+      & StLabel { padding-left: 2px; }
+    }
     &.bottom {
-      //border-bottom-width: 2px;
+      @include window_list("base", "bottom");
 
       & StLabel { padding-left: 2px; }
     }
 
     &.right {
-      padding-left: 0px;
-      padding-right: 0px;
-      //border-right-width: 2px;
+      @include window_list("base", "right");
 
       & StBin { padding-right: 0; }
     }
 
     &.left {
-      padding-left: 0px;
-      padding-right: 0px;
-      //border-left-width: 2px;
+      @include window_list("base", "left");
+      
+      &:hover { @include window_list("hover", "left"); }
+      &:active,
+      &:checked {
+        @include window_list("active", "left");
+        
+        &:hover { @include window_list("active-hover", "left"); }
+        &:focus {
+          @include window_list("focus", "left");
+          
+          &:hover { @include window_list("focus-hover", "left"); }
+        }
+      }
+      
+      .progress { @include window_list("progress", "left"); }
+      &:focus .progress { @include window_list("focus-progress", "left"); }
 
       & StBin { padding-left: 3px; }
     }
-    
-    // TODO: support directional panels?
-
-    &:hover { @include window_list("hover"); }
-    &:active,
-    &:checked {
-      @include window_list("active");
-      
-      &:hover { @include window_list("active-hover"); }
-      &:focus {
-        @include window_list("focus");
-        
-        &:hover { @include window_list("focus-hover"); }
-      }
-    }
-    
-    .progress { @include window_list("progress"); }
-    &:focus .progress { @include window_list("focus-progress"); }
   }
 
   &-item-demands-attention {
