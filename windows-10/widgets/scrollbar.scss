@@ -4,7 +4,7 @@ $scrollbar_trough_radius : 0px;
 
 @mixin scrollbar_trough() {
   border-radius: $scrollbar_trough_radius;
-  background-color: transparentize($base_color, 0.9);
+  background-color: transparentize($fg_color, 0.9);
 }
 
 // TODO: horizontal/vertical?
