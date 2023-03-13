@@ -1,4 +1,6 @@
-// include colors
-// include imports
+$variant : "dark";
 
-// include cinnamon-core
+@import "colors_dark";
+@import "imports";
+
+@import "../core/cinnamon/_common.scss";
