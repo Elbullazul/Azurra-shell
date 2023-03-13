@@ -12,10 +12,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   width="24"
-   height="24"
-   viewBox="0 0 24 24"
-   sodipodi:docname="item-attention-hover.svg">
+   width="44"
+   height="20"
+   viewBox="0 0 44 20"
+   sodipodi:docname="on.svg">
   <metadata
      id="metadata8">
     <rdf:RDF>
@@ -40,28 +40,30 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="1008"
+     inkscape:window-height="978"
      id="namedview4"
      showgrid="false"
-     inkscape:zoom="9.8333333"
-     inkscape:cx="-21.75908"
-     inkscape:cy="-1.6433908"
+     inkscape:zoom="8.9545455"
+     inkscape:cx="10.497462"
+     inkscape:cy="23.401015"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="24"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2" />
   <rect
-     style="fill:#fdb67d;fill-opacity:1"
-     id="rect4133"
-     width="24.101694"
-     height="21.661016"
-     x="0"
-     y="0" />
-  <rect
-     style="fill:#ff7200;fill-opacity:1;opacity:1"
-     id="rect4147"
-     width="24"
-     height="2.401"
-     x="0"
-     y="21.598999" />
+     style="opacity:1;fill:#0078d7;fill-opacity:1;stroke:#0078d7;stroke-width:4.22302294;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+     id="rect812"
+     width="39.800457"
+     height="15.772534"
+     x="-41.911968"
+     y="-17.888489"
+     ry="7.8862672"
+     transform="scale(-1)" />
+  <circle
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:6.2354908;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+     id="path818"
+     cx="-34.209698"
+     cy="-10.004429"
+     r="4.75"
+     transform="scale(-1)" />
 </svg>

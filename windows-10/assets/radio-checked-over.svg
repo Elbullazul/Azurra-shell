@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   id="svg2"
    version="1.1"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   width="24"
-   height="24"
-   viewBox="0 0 24 24"
-   sodipodi:docname="item-attention.svg">
+   id="svg2"
+   width="13"
+   height="13"
+   viewBox="0 0 17.383999 17.383999"
+   sodipodi:docname="radio-selected.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
   <metadata
      id="metadata8">
     <rdf:RDF>
@@ -24,7 +24,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -40,28 +39,36 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="1008"
+     inkscape:window-height="994"
      id="namedview4"
      showgrid="false"
-     inkscape:zoom="9.8333333"
-     inkscape:cx="-40.115012"
-     inkscape:cy="-2.0501705"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="22.627417"
+     inkscape:cx="4.9369671"
+     inkscape:cy="8.7295365"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg2" />
+     inkscape:current-layer="svg2"
+     inkscape:measure-start="0,0"
+     inkscape:measure-end="0,0" />
   <rect
-     style="fill:#a35c23;fill-opacity:1"
-     id="rect4133"
-     width="24.101694"
-     height="21.661016"
-     x="0"
-     y="0" />
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#0078d7;stroke-width:1.20194268;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="rect814"
+     width="16.182056"
+     height="16.182056"
+     x="0.60097134"
+     y="0.60097134"
+     rx="8.0910282"
+     ry="8.0910282" />
   <rect
-     style="fill:#ff7200;fill-opacity:1;opacity:1"
-     id="rect4147"
-     width="24"
-     height="2.401"
-     x="0"
-     y="21.598999" />
+     style="opacity:1;fill:#0078d7;fill-opacity:1;stroke:none;stroke-width:0.74276263;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="rect814-3"
+     width="10"
+     height="10"
+     x="3.688"
+     y="3.6959989"
+     rx="5"
+     ry="5" />
 </svg>
