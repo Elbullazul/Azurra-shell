@@ -492,27 +492,23 @@ StScrollBar {
 
 
   &-top, &-bottom, &-left, &-right {
-    color: $selected_fg_color;
-    border: none;
-    background-color: transparentize($panel_bg_color, 0.01);
-    font-size: 1em;
-    padding: 0px;
+    @include panel();
   }
 
   &-top {
-    box-shadow: 0 1px $border_color;
+    @include panel("top");
   }
 
   &-bottom {
-    box-shadow: 0 -1px $border_color;
+    @include panel("bottom");
   }
 
   &-left {
-    box-shadow: 1px 0 $border_color;
+    @include panel("left");
   }
 
   &-right {
-    box-shadow: -1px 0 $border_color;
+    @include panel("right");
   }
 
   &-dummy {
@@ -1619,20 +1615,66 @@ StScrollBar {
     &.top {
       @include window_list("base", "top");
       
+      &:hover { @include window_list("hover", "top"); }
+      &:active,
+      &:checked {
+        @include window_list("active", "top");
+        
+        &:hover { @include window_list("active-hover", "top"); }
+        &:focus {
+          @include window_list("focus", "top");
+          
+          &:hover { @include window_list("focus-hover", "top"); }
+        }
+      }
       
+      .progress { @include window_list("progress", "top"); }
+      &:focus .progress { @include window_list("focus-progress", "top"); }
       
       & StLabel { padding-left: 2px; }
     }
     &.bottom {
       @include window_list("base", "bottom");
+      
+      &:hover { @include window_list("hover", "bottom"); }
+      &:active,
+      &:checked {
+        @include window_list("active", "bottom");
+        
+        &:hover { @include window_list("active-hover", "bottom"); }
+        &:focus {
+          @include window_list("focus", "bottom");
+          
+          &:hover { @include window_list("focus-hover", "bottom"); }
+        }
+      }
+      
+      .progress { @include window_list("progress", "bottom"); }
+      &:focus .progress { @include window_list("focus-progress", "bottom"); }
 
       & StLabel { padding-left: 2px; }
     }
 
     &.right {
       @include window_list("base", "right");
+      
+      &:hover { @include window_list("hover", "right"); }
+      &:active,
+      &:checked {
+        @include window_list("active", "right");
+        
+        &:hover { @include window_list("active-hover", "right"); }
+        &:focus {
+          @include window_list("focus", "right");
+          
+          &:hover { @include window_list("focus-hover", "right"); }
+        }
+      }
+      
+      .progress { @include window_list("progress", "right"); }
+      &:focus .progress { @include window_list("focus-progress", "right"); }
 
-      & StBin { padding-right: 0; }
+      & StBin { padding-right: 0px; }
     }
 
     &.left {
@@ -2003,19 +2045,12 @@ StScrollBar {
       padding-bottom: 3px;
     }
 
-    &:hover,
-    &:checked {
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
-    }
-
-    &:highlight {
-      background-image: none;
-      border-image: none;
-      background-color: transparentize($error_color, 0.5);
-    }
+    &:hover { @include panel_button("hover"); }
+    &:checked { @include panel_button("active"); }
+    &:highlight { @include panel_button("highlight"); }
   }
 
+  // FIXME: can cause problems
   &-label {
     font-weight: bold;
     color: $panel_fg_color;
@@ -2024,24 +2059,23 @@ StScrollBar {
     &:checked,
     .applet-box:hover &,
     .applet-box:checked & {
-      color: $selected_fg_color;
+      color: $panel_fg_color;
       text-shadow: none;
     }
   }
 
   &-icon {
-    color: $selected_fg_color;
+    color: $panel_fg_color;
     icon-size: 22px;
 
     &:hover,
     &:checked,
     .applet-box:hover > &,
     .applet-box:checked > & {
-      color: $selected_fg_color;
+      color: $panel_fg_color;
       text-shadow: none;
     }
   }
-
 }
 
 // User Applet
