@@ -2,21 +2,27 @@
 
 @mixin entry($type : "base") {
   @if $type == "base" {
-    
+    border: 1px solid $border_color;
+    color: $text_color;
+    background-color: $base_color;
+    border-radius: $entry_radius;
   }
   @if $type == "focus" {
-    
+    border-color: $selected_bg_color;
   }
   @if $type == "disabled" {
-    
+    color: $disabled_fg_color;
   }
   @if $type == "osd" {
-    
+    border: 2px solid $osd_fg_color;
+    color: $osd_fg_color;
+    background-color: $osd_bg_color;
+    border-radius: $entry_radius;
   }
   @if $type == "osd-focus" {
-    
+    border-color: $selected_bg_color;
   }
   @if $type == "osd-disabled" {
-    
+    color: $disabled_fg_color;
   }
 }
