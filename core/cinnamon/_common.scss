@@ -21,20 +21,6 @@ stage { color: $fg_color; }
   &:insensitive { @include button(disabled); }
 }
 
-%osd_button {
-  min-height: 20px;
-  padding: 5px 32px;
-  transition-duration: 0;
-  border-radius: $button_radius;
-
-  @include button(osd);
-
-  &:hover { @include button(osd-hover); }
-  &:focus { color: $selected_bg_color; }
-  &:active { @include button(osd-active); }
-  &:insensitive { @include button(osd-disabled); }
-}
-
 // Entries
 %entry {
   padding: 7px;
@@ -119,10 +105,10 @@ StScrollBar {
 .popup-slider-menu-item,
 .slider {
   -slider-height: 0.3em;
-  -slider-background-color: darken($bg_color, 5%);                  //background of the trough
+  -slider-background-color: transparentize($fg_color, 0.5);         //background of the trough
   -slider-border-color: transparentize($bg_color, 0.7);             //trough border color
   -slider-active-background-color: $selected_bg_color;              //active trough fill
-  -slider-active-border-color: transparentize($bg_color, 0.7);      //active trough border
+  -slider-active-border-color: transparentize($fg_color, 0.7);      //active trough border
   -slider-border-width: 1px;
   -slider-handle-radius: 0.5em;
   height: 1em;
@@ -130,6 +116,7 @@ StScrollBar {
   border: 0 solid transparent;
   border-right-width: 1px;
   border-left-width: 5px;
+  color: $fg_color;
 }
 
 // Check Boxes
@@ -204,7 +191,7 @@ StScrollBar {
 // Tooltip
 #Tooltip {
   border: 1px solid $tooltip_border_color;
-  border-radius: 3px;
+  border-radius: $global_radius;
   padding: 5px 12px;
   background-color: $tooltip_bg_color;
   color: $tooltip_fg_color;
@@ -215,12 +202,12 @@ StScrollBar {
 
 // Looking Glass
 #LookingGlassDialog {
-    color: $fg_color;
-    border: 1px solid $border_color;
-    border-radius: 3px;
-    background-color: $bg_color;
-    spacing: 4px;
-    padding: 8px;
+  color: $fg_color;
+  border: 1px solid $border_color;
+  border-radius: $global_radius;
+  background-color: $bg_color;
+  spacing: 4px;
+  padding: 8px;
 }
 
 // Popovers/Menus
@@ -228,9 +215,10 @@ StScrollBar {
 .menu {
   color: $fg_color;
   border: 1px solid $border_color;
-  border-radius: 3px;
+  border-radius: $global_radius;
 	background-color: transparentize($bg_color, 0.01);
 
+  // this doesn't appear to work
   &.top {
     border-radius: 0 0 3px 3px;
   }
@@ -349,7 +337,7 @@ StScrollBar {
 .popup-combo-menu {
   color: $fg_color;
   border: 1px solid $border_color;
-  border-radius: 3px;
+  border-radius: $global_radius;
   background-color: $base_color;
   box-shadow: none;
   padding: 1em 0em 1em 0em;
@@ -987,7 +975,7 @@ StScrollBar {
 // TODO: move to notification.scss?
 #notification {
   border: 1px solid $border_color;
-  border-radius: 3px;
+  border-radius: 3px;   // TODO: either a property or defined in _notifications.scss
   background-color: $bg_color;
   padding: 13px;
   spacing-rows: 10px;
@@ -1051,11 +1039,7 @@ StScrollBar {
 }
 
 .switcher-list {
-  border-radius: $global_radius;
-  border: 1px solid $border_color;
-  color: $fg_color;
-  background-color: $bg_color;
-  padding: 20px;
+  @include app_switcher();
 
   > StBoxLayout {
     padding: 4px;
@@ -1063,20 +1047,9 @@ StScrollBar {
 
   &-item-container { spacing: 8px; }
 
-  .item-box {
-    padding: 8px;
-    border-radius: 2px;
-
-    &:outlined {
-      padding: 8px;
-      border: 1px solid $selected_bg_color;
-    }
-
-    &:selected {
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
-      border: 0px solid $selected_bg_color;
-    }
+  .item-box { @include app_switcher_selection("base");
+    &:outlined { @include app_switcher_selection("outlined"); }
+    &:selected { @include app_switcher_selection("selected"); }
   }
 
   .thumbnail { width: 256px; }
@@ -1136,7 +1109,7 @@ StScrollBar {
 .modal-dialog {
   background-color: $bg_color;
   border: 1px solid $border_color;
-  border-radius: 3px;
+  border-radius: $global_radius;
   padding: 5px 10px;
 
   > StBoxLayout:first-child {
@@ -1171,7 +1144,7 @@ StScrollBar {
 .run-dialog {
   padding: 10px 15px 10px 15px;
   border: 1px solid $border_color;
-  border-radius: 3px;
+  border-radius: $global_radius;
   background-color: $bg_color;
 
   > * { padding: 0; }
@@ -1207,14 +1180,14 @@ StScrollBar {
     width: 21em;
     height: 1.2em;
     padding: 7px;
-    border-radius: 3px;
+    //border-radius: 3px;
     caret-color: $osd_fg_color;
     selected-color: $selected_fg_color;
     selection-background-color: $selected_bg_color;
 
     @include entry(osd);
 
-    &:focus { @include entry(focus); }
+    &:focus { @include entry(osd-focus); }
   }
   .modal-dialog-button-box {
     border: none;
@@ -1310,7 +1283,7 @@ StScrollBar {
   min-width: 2em;
   font-size: 1.4em;
   font-weight: bold;
-  border-radius: 3px;
+  border-radius: $global_radius;
   box-shadow: none;
 
   @include button(osd);
@@ -1593,7 +1566,7 @@ StScrollBar {
     color: $fg_color;
     border: 1px solid $border_color;
     background-color: $bg_color;
-    border-radius: 3px;
+    border-radius: $global_radius;
     padding: 6px 12px 12px 12px;
     font-size: 1em;
   }
@@ -1737,7 +1710,7 @@ StScrollBar {
     color: $fg_color;
     border: 1px solid $border_color;
     background-color: $bg_color;
-    border-radius: 3px;
+    border-radius: $global_radius;
     padding: 0px;
 
     > StBoxLayout {
