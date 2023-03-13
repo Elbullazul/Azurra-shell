@@ -59,8 +59,8 @@ stage { color: $fg_color; }
 
 // Scrollbars
 StScrollView {
-  &.vfade { -st-vfade-offset: 68px; }
-  &.hfade { -st-hfade-offset: 68px; }
+  &.vfade { -st-vfade-offset: 0px; }
+  &.hfade { -st-hfade-offset: 0px; }
 }
 
 StScrollBar {
@@ -102,21 +102,30 @@ StScrollBar {
 
 // Slider
 // TODO: move to slider.scss?
+$slider_size : 0.1em;
+$slider_color : mix($selected_bg_color, $fg_color, 0.1);
+$slider_border : shade($selected_bg_color, 0.2);
+
+$slider_trough_color : transparentize($fg_color, 0.5);
+$slider_trough_border : transparentize($fg_color, 0.7);
+$slider_fill_color : $selected_bg_color;
+$slider_fill_border : transparentize($fg_color, 0.7);
+
 .popup-slider-menu-item,
 .slider {
-  -slider-height: 0.3em;
-  -slider-background-color: transparentize($fg_color, 0.5);         //background of the trough
-  -slider-border-color: transparentize($bg_color, 0.7);             //trough border color
-  -slider-active-background-color: $selected_bg_color;              //active trough fill
-  -slider-active-border-color: transparentize($fg_color, 0.7);      //active trough border
+  -slider-height: $slider_size;
+  -slider-background-color: $slider_trough_color;
+  -slider-border-color: $slider_trough_border;
+  -slider-active-background-color: $slider_fill_color;
+  -slider-active-border-color: $slider_fill_border;
   -slider-border-width: 1px;
   -slider-handle-radius: 0.5em;
   height: 1em;
   min-width: 15em;
-  border: 0 solid transparent;
+  border: 1px solid $slider_border;
   border-right-width: 1px;
   border-left-width: 5px;
-  color: $fg_color;
+  color: $slider_color;
 }
 
 // Check Boxes
@@ -624,11 +633,11 @@ StScrollBar {
     transition-duration: 100;
 
     &:hover {
-      background-image: url("assets/misc/add-workspace-hover.svg");
+      background-color: rgba(255,255,255,0.3);
       transition-duration: 100;
     }
     &:active {
-      background-image: url("assets/misc/add-workspace-active.svg");
+      background-color: $selected_bg_color;
       transition-duration: 100;
     }
   }
@@ -1004,7 +1013,8 @@ StScrollBar {
   &-scrollview {
     max-height: 10em;
 
-    > .top-shadow, > .bottom-shadow { height: 1em; }
+    // disable shadows
+    > .top-shadow, > .bottom-shadow { height: 0px; }
 
     &:ltr > StScrollBar { padding-left: 6px; }
     &:rtl > StScrollBar { padding-right: 6px; }
