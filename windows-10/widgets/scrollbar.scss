@@ -8,7 +8,6 @@ $scrollbar_trough_radius : 0px;
 }
 
 // TODO: horizontal/vertical?
-// TODO: make it look the same on light/dark variants
 $scrollbar_slider_radius : 0px;
 
 @mixin scrollbar_slider($type) {
@@ -20,10 +19,20 @@ $scrollbar_slider_radius : 0px;
   }
   
   @if $type == "hover" {
-    background-color: mix($fg_color, $bg_color, 30%);
+    @if $variant == "light" {
+      background-color: mix($fg_color, $bg_color, 30%);
+    }
+    @else if $variant == "dark" {
+      background-color: mix($fg_color, $bg_color, 50%);
+    }
   }
   
   @if $type == "active" {
-    background-color: mix($fg_color, $bg_color, 60%);
+    @if $variant == "light" {
+      background-color: mix($fg_color, $bg_color, 60%);
+    }
+    @else if $variant == "dark" {
+      background-color: mix($fg_color, $bg_color, 30%);
+    }
   }
 }
