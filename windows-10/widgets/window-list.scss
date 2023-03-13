@@ -1,42 +1,5 @@
 // cinnamon window-list and task-list (icons only, mostly the same)
 
-// TODO: change reimplement with colors, box-shadow, borders and padding only
-/* The following snippet works for the left panel
-.grouped-window-list-item-box {
-  text-align: left;
-  font-weight: normal;
-  color: rgba(0, 0, 0, 0.8);
-  background-color: transparent;
-  background-image: none;
-  padding-left: 8px;
-  padding-right: 8px;
-  border: 3px solid transparent;
-  transition-duration: 100; }
-  
-  .grouped-window-list-item-box.left {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 0px;
-    border-left-width: 0px;
-    border-right-width: 0px;
-    padding-right: 0px; }
-    .grouped-window-list-item-box.left StBin {
-      padding-left: 6px; }
-  .grouped-window-list-item-box:hover {
-    border-image: none;
-    background-color: rgba(0, 0, 0, 0.15); }
-  .grouped-window-list-item-box:active, .grouped-window-list-item-box:checked {
-    box-shadow: inset 3px 0px black; }
-    .grouped-window-list-item-box:active:hover, .grouped-window-list-item-box:checked:hover {
-      background-color: rgba(0,0,0,0.15); }
-    .grouped-window-list-item-box:active:focus, .grouped-window-list-item-box:checked:focus {
-      background-color: rgba(0,0,0,0.25);
-      border-width: 0px;
-      padding-top: 8px;
-      padding-bottom: 8px; }
-      .grouped-window-list-item-box:active:focus:hover, .grouped-window-list-item-box:checked:focus:hover {
-        background-color: rgba(0,0,0,0.3); }
-*/
 @mixin window_list($type, $position : "base") {
   // DOC
   // hover
@@ -57,13 +20,15 @@
     background-color: transparent;
     background-image: none;
     
-    @if $position == "left" or $type == "right" {
+    @if $position == "left" or $position == "right" {
       padding-top: 5px;
       padding-bottom: 5px;
       border-left-width: 0px;
       border-right-width: 0px;
     }
+    
     @if $position == "top" or $position == "bottom" {
+      min-width: 40px;
       padding-top: 0px;
       border-top-width: 0px;
       border-bottom-width: 0px;
@@ -87,13 +52,12 @@
     border-width: 0px;
     background-color: transparentize($panel_highlight_color, 0.8);
 
-    @if $position == "left" or $type == "right" {
+    @if $position == "left" or $position == "right" {
       padding-top: 8px;
       padding-bottom: 8px;
     }
-    @if $position == "top" or $type == "bottom" {
-      padding-left: 8px;
-      padding-right: 8px;
+    @if $position == "top" or $position == "bottom" {
+      min-width: 46px;
     }
   }
   
@@ -101,13 +65,24 @@
     border-width: 0px;
     background-color: transparentize($panel_highlight_color, 0.65);
 
-    @if $position == "left" or $type == "right" {
+    @if $position == "left" or $position == "right" {
       padding-top: 8px;
       padding-bottom: 8px;
     }
-    @if $position == "top" or $type == "bottom" {
-      padding-left: 8px;
-      padding-right: 8px;
+    @if $position == "top" or $position == "bottom" {
+      min-width: 46px;
+      
+      // ugly hack to keep the icons centered (why does padding not work on horizontal panels?)
+      @at-root
+      .grouped-window-list-item-box.#{$position} StBin {
+        margin-left: 6px;
+      }
+      
+      @at-root
+      .grouped-window-list-item-box.#{$position}:active:hover StBin,
+      .grouped-window-list-item-box.#{$position}:focus:active StBin {
+        margin-left: 0px;
+      }
     }
   }
   
@@ -116,7 +91,17 @@
   }
   
   @if $type == "progress" {
-    background-color: transparentize($progress_color, 0.8);
+    background-color: transparentize($progress_color, 0.7);
+    
+    @if $position == "left" { box-shadow: inset 2px 0px $progress_color; }
+    @if $position == "right" { box-shadow: inset -2px 0px $progress_color; }
+    @if $position == "top" { box-shadow: inset 0px 2px $progress_color; }
+    @if $position == "bottom" { box-shadow: inset 0px -2px $progress_color; }
+  }
+  
+  // TODO: replace white bg with more transparent green
+  @if $type == "focus-progress" {
+    background-color: transparentize($progress_color, 0.85);
     
     @if $position == "left" { box-shadow: inset 2px 0px $progress_color; }
     @if $position == "right" { box-shadow: inset -2px 0px $progress_color; }
