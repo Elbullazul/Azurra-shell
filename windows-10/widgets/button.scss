@@ -2,33 +2,21 @@
 
 @mixin button($type) {
   @if $type == "base" {
-    
-  }
-  @if $type == "flat" {
-    
+    border: 2px solid $border_color;
+    color: $fg_color;
+    background-color: $bg_color;
+    padding: 5px 8px;
   }
   @if $type == "focus" {
-    
+    box-shadow: 0 0 0 2px transparentize($border_color, 0.5);
   }
   @if $type == "hover" {
-    
+    border-color: $fg_color;
   }
   @if $type == "active" {
-    
+    background-color: shade($bg_color, 0.2);
   }
   @if $type == "disabled" {
-    
-  }
-  @if $type == "osd" {
-    
-  }
-  @if $type == "osd-hover" {
-    
-  }
-  @if $type == "osd-active" {
-    
-  }
-  @if $type == "osd-disabled" {
-    
+    color: $disabled_fg_color;
   }
 }
