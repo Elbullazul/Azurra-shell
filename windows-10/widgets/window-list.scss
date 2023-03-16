@@ -28,7 +28,7 @@
     }
     
     @if $position == "top" or $position == "bottom" {
-      min-width: 40px;
+      min-width: $taskgroup_item_width;
       padding-top: 0px;
       border-top-width: 0px;
       border-bottom-width: 0px;
@@ -57,7 +57,7 @@
       padding-bottom: 8px;
     }
     @if $position == "top" or $position == "bottom" {
-      min-width: 46px;
+      min-width: $taskgroup_item_width + 6px;
     }
   }
   
@@ -70,7 +70,7 @@
       padding-bottom: 8px;
     }
     @if $position == "top" or $position == "bottom" {
-      min-width: 46px;
+      min-width: $taskgroup_item_width + 6px;
       
       // ugly hack to keep the icons centered (why does padding not work on horizontal panels?)
       @at-root
