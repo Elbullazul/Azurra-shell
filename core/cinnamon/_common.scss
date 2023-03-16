@@ -101,16 +101,6 @@ StScrollBar {
 }
 
 // Slider
-// TODO: move to slider.scss?
-$slider_size : 0.1em;
-$slider_color : mix($selected_bg_color, $fg_color, 0.1);
-$slider_border : shade($selected_bg_color, 0.2);
-
-$slider_trough_color : transparentize($fg_color, 0.5);
-$slider_trough_border : transparentize($fg_color, 0.7);
-$slider_fill_color : $selected_bg_color;
-$slider_fill_border : transparentize($fg_color, 0.7);
-
 .popup-slider-menu-item,
 .slider {
   -slider-height: $slider_size;
@@ -122,7 +112,7 @@ $slider_fill_border : transparentize($fg_color, 0.7);
   -slider-handle-radius: 0.5em;
   height: 1em;
   min-width: 15em;
-  border: 1px solid $slider_border;
+  border: none;
   border-right-width: 1px;
   border-left-width: 5px;
   color: $slider_color;
@@ -199,14 +189,7 @@ $slider_fill_border : transparentize($fg_color, 0.7);
 
 // Tooltip
 #Tooltip {
-  border: 1px solid $tooltip_border_color;
-  border-radius: $global_radius;
-  padding: 5px 12px;
-  background-color: $tooltip_bg_color;
-  color: $tooltip_fg_color;
-  font-size: 1em;
-  font-weight: normal;
-  text-align: center;
+  @include tooltip();
 }
 
 // Looking Glass
@@ -222,32 +205,28 @@ $slider_fill_border : transparentize($fg_color, 0.7);
 // Popovers/Menus
 // TODO: partially move to menu.scss?
 .menu {
-  color: $fg_color;
-  border: 1px solid $border_color;
-  border-radius: $global_radius;
-	background-color: transparentize($bg_color, 0.01);
+  @include menu("normal");
 
   // this doesn't appear to work
   &.top {
-    border-radius: 0 0 3px 3px;
+    border-radius: 0 0 $menu_radius $menu_radius;
   }
 
   &.bottom {
-    border-radius: 3px 3px 0 0;
+    border-radius: $menu_radius $menu_radius 0 0;
   }
 
   &.left {
-    border-radius: 0 3px 3px 0;
+    border-radius: 0 $menu_radius $menu_radius 0;
   }
 
   &.right {
-    border-radius: 3px 0 0 3px;
+    border-radius: $menu_radius 0 0 $menu_radius;
   }
 }
 
 .popup-sub-menu {
-  background-color: $base_color;
-  box-shadow: none;
+  @include menu("sub-menu");
 
   .popup-menu-item:ltr { padding-right: 1.75em; }
   .popup-menu-item:rtl { padding-left: 1.75em; }
@@ -260,20 +239,13 @@ $slider_fill_border : transparentize($fg_color, 0.7);
 
 .popup-menu-content { padding: 1em 0em 1em 0em; }
 .popup-menu-item {
-  padding: .4em 1.75em;
-  spacing: 1em;
-  // border: 1px solid transparent;
-  border-left-width: 0;
-  border-right-width: 0;
+  @include menuitem("normal");
 
   &:active {
-    color: $selected_fg_color;
-    // border-color: transparentize($fg_color, 0.89);
-    background-color: $selected_bg_color;
+    @include menuitem("hover");
   }
   &:insensitive {
-    color: transparentize($fg_color, 0.5);
-    background: none;
+    @include menuitem("disabled");
   }
 }
 
@@ -291,8 +263,7 @@ $slider_fill_border : transparentize($fg_color, 0.7);
   &-arrow { icon-size: 16px; }
 
   .popup-sub-menu {
-    background-color: $base_color;
-    box-shadow: none;
+    @include menu("sub-menu");
 
     .popup-menu-item:ltr { padding-right: 1.75em; }
     .popup-menu-item:rtl { padding-left: 1.75em; }
@@ -305,20 +276,13 @@ $slider_fill_border : transparentize($fg_color, 0.7);
 
   .popup-menu-content { padding: 1em 0em 1em 0em; }
   .popup-menu-item {
-    padding: .4em 1.75em;
-    spacing: 1em;
-    border: 1px solid transparent;
-    border-left-width: 0;
-    border-right-width: 0;
+    @include menuitem("normal");
 
     &:active {
-      color: $fg_color;
-      border-color: transparentize($fg_color, 0.89);
-      background-color: transparentize($fg_color, 0.92);
+      @include menuitem("hover");
     }
     &:insensitive {
-      color: transparentize($fg_color, 0.5);
-      background: none;
+      @include menuitem("disabled");
     }
   }
 
@@ -331,9 +295,9 @@ $slider_fill_border : transparentize($fg_color, 0.7);
   &-icon { icon-size: 16px; }
 }
 
-// TODO: fogure this out
+// TODO: remove? (it's legacy for Cinnamon 3.2 and greater')
 .popup-menu-boxpointer {
-  -arrow-border-radius: $global_radius;
+  -arrow-border-radius: $menu_radius;
   -arrow-background-color:  $bg_color;
   -arrow-border-width: 1px;
   -arrow-border-color: $border_color;
@@ -1323,20 +1287,17 @@ $slider_fill_border : transparentize($fg_color, 0.7);
 // Menu (menu.js)
 // TODO: customize
 .menu {
+  &-background { @include menu("app-menu"); }
+
   &-favorites-box {
-    padding: 10px;
-    transition-duration: 300;
-    background-color: darken($base_color, 5%);
-    border: 1px solid $border_color;
+    @include menu("favorites-box");
   }
 
   &-favorites-button {
-    padding: .9em 1em;
-    border: 1px solid rgba(0,0,0,0);
-    border-radius: 2px;
+    @include menu_button("favorite");
 
     &:hover {
-      background-color: $selected_bg_color;
+      @include menu_button("favorite-hover");
     }
   }
 
@@ -1356,19 +1317,15 @@ $slider_fill_border : transparentize($fg_color, 0.7);
   &-applications-outer-box { margin: 10px 10px 0 10px; }
 
   &-application-button {
-    padding: 7px;
-    border: 1px solid rgba(0,0,0,0);
+    @include menu_button("app");
 
     // This style is used in menu application buttons for applications which were newly installed
-    &:highlighted { font-weight: bold; }
+    &:highlighted { @include menu_button("app-highlight"); }
 
     &-selected {
-      padding: 7px;
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
-      border: 1px solid $border_color;
+      @include menu_button("app-hover");
 
-      &:highlighted { font-weight: bold; }
+      &:highlighted { @include menu_button("app-highlight-hover"); }
     }
 
     &-label:ltr { padding-left: 5px; }
@@ -1376,23 +1333,19 @@ $slider_fill_border : transparentize($fg_color, 0.7);
   }
 
   &-category-button {
-    padding: 7px;
-    border: 1px solid rgba(0,0,0,0);
+    @include menu_button("category");
 
     &-selected {
-      padding: 7px;
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
-      border: 1px solid $border_color;
+      @include menu_button("category-hover");
+      
     }
+    // doesn't work (yet?)'
     &-hover {
       background-color: red;
       border-radius: 2px;
     }
     &-greyed {
-      padding: 7px;
-      color: $disabled_fg_color;
-      border: 1px solid rgba(0,0,0,0);
+      @include menu_button("category-disabled");
     }
 
     &-label:ltr { padding-left: 5px; }
@@ -1468,7 +1421,7 @@ $slider_fill_border : transparentize($fg_color, 0.7);
   color: $fg_color;
   background-color: $bg_color;
   border: 1px solid $border_color;
-  border-radius: 5px;
+  border-radius: $osd_radius;
 
   .osd-monitor-label { font-size: 3em; }
 
