@@ -32,25 +32,13 @@ $tooltip_bg_color: #fbeaa0;
 $tooltip_fg_color: #4a4a4a;
 $tooltip_border_color: #d0d0d0;
 
-// move elsewhere?
-$panel_width : 50px;    // vertical panels
-$panel_height : 40px;
-
-$global_radius : 0px;
-$button_radius : 0px;
-$entry_radius : 0px;
-$osd_radius : 0px;
-$menu_radius : 0px;
-
-$checkbox_size : 16px;
-$scrollbar_size : 4px;
-$toggle_width : 50px;
-$toggle_height : 20px;
-
-$tasklist_item_width : 15em;
-$taskgroup_item_width : 30px;
-
-$notification_radius : 0px;
 //$notification_bg_color :
 //$notification_fg_color : 
 //$notification_border_color :  
+
+$slider_color : lighten($selected_bg_color, 10%);
+
+$slider_trough_color : transparentize($fg_color, 0.5);
+$slider_trough_border : transparentize($fg_color, 0.7);
+$slider_fill_color : $selected_bg_color;
+$slider_fill_border : transparentize($fg_color, 0.7);

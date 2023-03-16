@@ -1,6 +1,8 @@
 $variant : "light";
+$environment : "cinnamon";
 
 @import "colors";
+@import "properties";
 @import "imports";
 
 @import "../core/cinnamon/_common.scss";
