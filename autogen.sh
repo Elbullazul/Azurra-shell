@@ -14,13 +14,13 @@ fi
 
 # copy files
 if [ ! -z $CINNAMON_DIR ]; then
-  cp -r "$1/"*.css $CINNAMON_DIR
-  cp -r "$1/assets" $CINNAMON_DIR
+  cp -r "$1/"*.css "$CINNAMON_DIR"
+  cp -r "$1/assets/"* "$CINNAMON_DIR/assets"
 fi
 
 if [ -f "$1/cinnamon-dark.css" ] && [ ! -z $CINNAMON_DARK_DIR ]; then
   cp -r "$1/cinnamon-dark.css" "$CINNAMON_DARK_DIR/cinnamon.css"
-  cp -r "$1/assets-dark" "$CINNAMON_DARK_DIR/assets"
+  cp -r "$1/assets-dark/"* "$CINNAMON_DARK_DIR/assets"
 fi
 
 echo "done"
