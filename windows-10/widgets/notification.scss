@@ -1,8 +1,14 @@
 // shell notifications
 @mixin notification() {
-  // background, color, etc.
-}
-
-@mixin notification_button() {
+  border: 1px solid $border_color;
+  border-radius: $global_radius;
+  background-color: $bg_color;
+  color: $fg_color;
+  padding: 13px;
   
+  // TODO: merge these values back to _common.scss?
+  spacing-rows: 10px;
+  spacing-columns: 10px;
+  margin-from-right-edge-of-screen: 20px;
+  width: 34em;
 }

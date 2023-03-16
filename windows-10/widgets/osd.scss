@@ -1,8 +1,23 @@
 // shell OSDs (volume, brightness, etc.)
 @mixin osd_window() {
-  
+  text-align: center;
+  font-weight: bold;
+  spacing: 1em;
+  padding: 20px;
+
+  color: $fg_color;
+  background-color: $bg_color;
+  border: 1px solid $border_color;
+  border-radius: $osd_radius;
 }
 
 @mixin osd_info() {
-  
+  text-align: center;
+  font-weight: bold;
+  spacing: 1em;
+  padding: 16px;
+  color: $fg_color;
+  border: 1px solid $border_color;
+  border-radius: $osd_radius;
+  background-color: $bg_color;
 }

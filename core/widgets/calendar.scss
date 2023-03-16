@@ -1,9 +1,30 @@
 // shell calendar
-
-@mixin calendar() {
-  // background, padding, size, etc.
-}
-
-@mixin calendar_today() {
-  // selected day
+@mixin calendar_day($type) {
+  @if $type == "normal" {
+    // sizing
+  }
+  
+  @if $type == "hover" {
+    
+  }
+  
+  @if $type == "selected" {
+    
+  }
+  
+  @if $type == "selected-hover" {
+    
+  }
+  
+  @if $type == "today" {
+    
+  }
+  
+  @if $type == "today-hover" {
+    
+  }
+  
+  @if $type == "today-selected" {
+    
+  }
 }

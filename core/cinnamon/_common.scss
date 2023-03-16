@@ -865,6 +865,7 @@ StScrollBar {
   height: 4px;
 }
 
+// days of the week headers
 .calendar-day-base {
   font-size: 1em;
   text-align: center;
@@ -905,36 +906,42 @@ StScrollBar {
 }
 
 .calendar-today {
-  color: $fg_color;
-  background-color: if($variant == 'light', transparentize($selected_bg_color, 0.6), transparentize($selected_bg_color, 0.6));
-  border-width: 0;
+  @include calendar_day("today");
+
+  &:hover {
+    @include calendar_day("today-hover");
+  }
 
   &:selected {
-    font-weight: bold;
+    @include calendar_day("today-selected");
   }
 }
 
 .calendar-not-today {
   color: $fg_color;
+  @include calendar_day("normal");
+
+  &:hover {
+    @include calendar_day("hover");
+  }
 
   &:selected {
-    font-weight: bold;
-    background-color: if($variant == 'light', transparentize($fg_color, 0.7), transparentize($fg_color, 0.6));
+    @include calendar_day("selected");
 
     &:hover {
-      font-weight: bold;
-      color: $fg_color;
+      @include calendar_day("selected-hover");
     }
   }
 }
 
 .calendar-other-month-day {
+  @include calendar_day("normal");
   color: transparentize($fg_color, 0.7);
   opacity: 1;
 }
 
 .calendar-other-month-day:hover {
-  color: $selected_fg_color;
+  @include calendar_day("hover");
   opacity: 1;
 }
 
@@ -947,19 +954,10 @@ StScrollBar {
 // Notifications
 // TODO: move to notification.scss?
 #notification {
-  border: 1px solid $border_color;
-  border-radius: 3px;   // TODO: either a property or defined in _notifications.scss
-  background-color: $bg_color;
-  padding: 13px;
-  spacing-rows: 10px;
-  spacing-columns: 10px;
-  margin-from-right-edge-of-screen: 20px;
-  width: 34em;
-  color: $fg_color;
+  @include notification();
 
   .popup-menu & {
     color: $fg_color;
-    border-image: url("assets/misc/message.svg") 9 9 9 9;
 
     .notification-button, .notification-icon-button {
       @extend %button;
@@ -1260,12 +1258,12 @@ StScrollBar {
   border-radius: $global_radius;
   box-shadow: none;
 
-  @include button(osd);
+  @include button(base);
 
-  &:hover { @include button(osd-hover); }
-  &:active, &:checked { @include button(osd-active); }
+  &:hover { @include button(hover); }
+  &:active, &:checked { @include button(active); }
 
-  &:grayed { @include button(osd-disabled); }
+  &:grayed { @include button(disabled); }
 }
 
 .keyboard-subkeys { //long press on a key popup
@@ -1394,14 +1392,7 @@ StScrollBar {
 
 // OSD
 .info-osd {
-  text-align: center;
-  font-weight: bold;
-  spacing: 1em;
-  padding: 16px;
-  color: $fg_color;
-  border: 1px solid $border_color;
-  border-radius: $osd_radius;
-  background-color: $bg_color;
+  @include osd_info();
 }
 
 .restart-osd {
@@ -1413,27 +1404,19 @@ StScrollBar {
 }
 
 .osd-window {
-  text-align: center;
-  font-weight: bold;
-  spacing: 1em;
-  padding: 20px;
-
-  color: $fg_color;
-  background-color: $bg_color;
-  border: 1px solid $border_color;
-  border-radius: $osd_radius;
+  @include osd_window();
 
   .osd-monitor-label { font-size: 3em; }
 
   .level {
     padding: 0;
     height: 0.7em;
-    background-color: transparentize(black, 0.5);
-    border-radius: 2px;
+    background-color: transparentize($fg_color, 0.5);
+    border-radius: $global_radius;
   }
 
   .level-bar {
-    border-radius: 2px;
+    border-radius: $global_radius;
     background-color: $selected_bg_color;
   }
 }
@@ -1943,8 +1926,8 @@ StScrollBar {
 }
 
 // Overview corner
-#overview-corner { background-image: url("assets/misc/overview.png");
-  &:hover { background-image: url("assets/misc/overview-hover.png"); }
+#overview-corner { background-image: url("assets/misc/overview.svg");
+  &:hover { background-image: url("assets/misc/overview-hover.svg"); }
 }
 
 // Applets (applet.js)

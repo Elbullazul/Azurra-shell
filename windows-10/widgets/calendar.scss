@@ -1,9 +1,40 @@
 // shell calendar
-
-@mixin calendar() {
-  // background, padding, size, etc.
-}
-
-@mixin calendar_today() {
-  // selected day
+@mixin calendar_day($type) {
+  @if $type == "normal" {
+    border-radius: $global_radius;
+    border: 2px solid transparent;
+  }
+  
+  @if $type == "hover" {
+    font-weight: bold;
+    border: 2px solid transparentize($fg_color, 0.8);
+    background-color: transparentize($fg_color, 0.8);
+  }
+  
+  @if $type == "selected" {
+    font-weight: bold;
+    border: 2px solid $selected_bg_color;
+  }
+  
+  @if $type == "selected-hover" {
+    font-weight: bold;
+    border: 2px solid darken($selected_bg_color, 10%);
+  }
+  
+  @if $type == "today" {
+    border: 2px solid $selected_bg_color;
+    background-color: $selected_bg_color;
+  }
+  
+  @if $type == "today-hover" {
+    border: 2px solid lighten($selected_bg_color, 20%);
+    background-color: $selected_bg_color;
+  }
+  
+  @if $type == "today-selected" {
+    font-weight: bold;
+    border: 2px solid $selected_bg_color;
+    background-color: $selected_bg_color;
+    box-shadow: inset 0px 0px 0px 2px $fg_color;
+  }
 }
